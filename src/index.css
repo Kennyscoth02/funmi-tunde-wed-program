@@ -1,0 +1,585 @@
+:root {
+  --emerald: #0e4a38;
+  --emerald-deep: #093226;
+  --emerald-soft: #1f6b52;
+  --peach: #f0b192;
+  --peach-soft: #f7d3c0;
+  --gold: #c39a3f;
+  --gold-soft: #e6cd8f;
+  --cream: #fbf7ee;
+  --cream-2: #f4efe2;
+  --ink: #21261f;
+  --ink-soft: #55594f;
+  --line: rgba(14, 74, 56, 0.18);
+
+  --font-display: 'Playfair Display', 'Times New Roman', serif;
+  --font-script: 'Tangerine', 'Brush Script MT', cursive;
+  --font-body: 'Cormorant Garamond', 'Georgia', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--cream-2);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(20px, 5vw, 64px) 16px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* soft ambient botanical corner glows, echoing the invite's leaf corners */
+.botanical {
+  position: fixed;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(15, 92, 67, 0.14), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.botanical-tl {
+  top: -120px;
+  left: -120px;
+}
+.botanical-br {
+  bottom: -120px;
+  right: -120px;
+  background: radial-gradient(circle at 70% 70%, rgba(195, 154, 63, 0.14), transparent 70%);
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 620px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 30px 60px -30px rgba(9, 50, 38, 0.35);
+  padding: 0;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: clamp(28px, 6vw, 56px);
+}
+
+/* ── Hero (couple photo) ──────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  line-height: 0; /* remove gap under img */
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain; /* show full image, no cropping */
+}
+
+/* Dark scrim only at the top so names are readable */
+.hero-names-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: clamp(20px, 5vw, 36px) clamp(20px, 5vw, 40px) clamp(40px, 10vw, 80px);
+  background: linear-gradient(
+    180deg,
+    rgba(9, 50, 38, 0.72) 0%,
+    rgba(9, 50, 38, 0.2) 60%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+
+/* Names at top of the hero image: bold, uppercase, Playfair Display */
+.names {
+  margin: 0;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 16px;
+}
+
+.name-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 8vw, 35px);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 12px rgba(9, 50, 38, 0.8), 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.amp-lg {
+  font-family: var(--font-script);
+  font-size: clamp(28px, 7vw, 44px);
+  color: var(--gold-soft);
+  text-shadow: 0 2px 12px rgba(9, 50, 38, 0.8);
+  line-height: 1;
+}
+
+/* ── Ministers panel (directly below photo) ────────── */
+.ministers-panel {
+  text-align: center;
+  padding: clamp(20px, 5vw, 32px) clamp(24px, 6vw, 48px);
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+
+.ministers-label {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+}
+
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+}
+
+.hero .families {
+  color: var(--peach-soft);
+  text-shadow: 0 1px 10px rgba(9, 50, 38, 0.7);
+}
+
+.families {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(15px, 3.2vw, 18px);
+  letter-spacing: 0.03em;
+  color: var(--emerald);
+  margin: 0 0 14px;
+}
+
+.amp {
+  color: rgba(251, 247, 238, 0.75);
+  font-style: italic;
+  margin: 0 6px;
+}
+
+.sprig {
+  color: var(--gold-soft);
+  font-size: 18px;
+  margin: 4px 0 16px;
+  text-shadow: 0 1px 8px rgba(9, 50, 38, 0.6);
+}
+
+
+
+.date-badge {
+  margin: 28px auto 20px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.date-badge-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.wk,
+.time {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  border-top: 1px solid rgba(230, 205, 143, 0.6);
+  border-bottom: 1px solid rgba(230, 205, 143, 0.6);
+  padding: 4px 2px;
+}
+
+.day {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 44px;
+  color: var(--gold-soft);
+  line-height: 1;
+  text-shadow: 0 1px 10px rgba(9, 50, 38, 0.7);
+}
+
+.month-year {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: rgba(251, 247, 238, 0.8);
+  margin-top: 6px;
+}
+
+.venue-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--peach-soft);
+  margin: 4px 0 2px;
+}
+
+.venue-address {
+  font-size: 16px;
+  color: rgba(251, 247, 238, 0.85);
+  margin: 0;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 34px 0;
+}
+
+/* ── Programme / timeline ────────────────────────────── */
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--emerald);
+  text-align: center;
+  margin: 0 0 4px;
+}
+
+.section-title.small {
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 0 0 32px;
+  font-size: 16px;
+}
+
+/* ── Numbered order lists (ceremony / reception) ─────── */
+.order-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.order-item {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  column-gap: 16px;
+  align-items: start;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--line);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.order-number {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--gold);
+  padding-top: 2px;
+}
+
+.order-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink);
+}
+
+.order-note {
+  margin: 3px 0 0;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.ministers {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.minister-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--emerald);
+}
+
+.minister-list li {
+  padding: 6px 16px;
+  border: 1px solid var(--gold-soft);
+  border-radius: 999px;
+}
+
+/* ── Hymn accordion ───────────────────────────────────── */
+.hymn {
+  margin-top: 10px;
+}
+
+.hymn-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--emerald-soft);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--gold-soft);
+}
+
+.hymn-toggle:hover {
+  color: var(--emerald);
+}
+
+.hymn-toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.hymn-caret {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--gold);
+}
+
+.hymn-body {
+  margin-top: 12px;
+  padding: 16px 18px;
+  background: var(--cream-2);
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+.hymn-verse {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.hymn-verse-number {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--gold);
+}
+
+.hymn-line {
+  margin: 0 0 2px;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.hymn-chorus {
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.hymn-chorus-label {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--emerald);
+}
+
+.hymn-chorus .hymn-line {
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* ── Colours ──────────────────────────────────────── */
+.colours {
+  text-align: center;
+}
+
+.swatches {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.chip {
+  width: 56px;
+  height: 20px;
+  border-radius: 4px;
+  display: block;
+}
+
+.chip-emerald {
+  background: var(--emerald);
+}
+.chip-peach {
+  background: var(--peach);
+}
+.chip-gold {
+  background: var(--gold);
+}
+
+/* ── Footer ───────────────────────────────────────── */
+.footer {
+  text-align: center;
+  margin-top: 34px;
+}
+
+.rsvp-numbers {
+  font-size: 16px;
+  color: var(--ink);
+  margin: 8px 0 18px;
+}
+
+.hashtag {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--emerald);
+  font-size: 14px;
+  margin: 0;
+}
+
+@media (max-width: 420px) {
+  .order-item {
+    grid-template-columns: 34px 1fr;
+    column-gap: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .order-item {
+    transition: none;
+  }
+}
+
+/* ── Site Footer ───────────────────────────────────── */
+.site-footer {
+  text-align: center;
+  padding: clamp(24px, 5vw, 36px) clamp(24px, 6vw, 48px) clamp(28px, 6vw, 40px);
+  background: var(--emerald-deep);
+  color: rgba(251, 247, 238, 0.7);
+}
+
+.footer-divider {
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.footer-divider::before,
+.footer-divider::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: rgba(230, 205, 143, 0.4);
+}
+
+.footer-heart {
+  color: var(--gold-soft);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.footer-copy {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(251, 247, 238, 0.45);
+  margin: 0 0 8px;
+}
+
+.footer-credit {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(251, 247, 238, 0.6);
+  margin: 0;
+}
+
+.footer-link {
+  color: var(--gold-soft);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
