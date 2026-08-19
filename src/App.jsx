@@ -30,7 +30,7 @@ const CEREMONY = [
   { title: 'Recessional Hymn', note: '\u201cTo God Be The Glory\u201d', hymnKey: 'toGodBeTheGlory' },
 ]
 
-const MINISTERS = ['Pastor Seun Akinloye', 'Pastor Stephen Omotere', 'Pastor David Abubakar', 'Amb. Emmanuel Ohis', 'Pastor Akanbi Ayoyinka']
+const MINISTERS = ['Pastor Seun Akinloye', 'Pastor Stephen Omotere', 'Amb. Emmanuel Ohis', 'Pastor David Abubakar', 'Pastor Akanbi Ayoyinka']
 
 const RECEPTION = [
   { title: 'Arrival of Guests' },
